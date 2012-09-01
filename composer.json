@@ -21,6 +21,6 @@
         "psr-0": { "Ibrows\\CodebaseApiBundle": "src/" }
     },
     
-    "target-dir": "Ibrows/Bundle/CodebaseApiBundle",
+    "target-dir": "Ibrows/CodebaseApiBundle",
     "minimum-stability": "dev"
 }
