@@ -1,0 +1,26 @@
+{
+    
+    "name":         "ibrows/codebase-api-bundle",
+    "description":  "This bundle provides an integration of the Codebase API library",
+    "keywords":     ["ibrows", "codebase"],
+    "type":         "symfony-bundle",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "Mike Meier",
+            "homepage": "sk.mykon@gmail.com"
+        }
+    ],
+    
+    "require":      {
+        "ibrows/codebase-api": "*",
+        "symfony/framework-bundle": "2.*"
+    },
+    
+    "autoload":     {
+        "psr-0": { "Ibrows\\Bundle\\CodebaseApiBundle": "" }
+    },
+    
+    "target-dir": "Ibrows/Bundle/CodebaseApiBundle",
+    "minimum-stability": "dev"
+}
