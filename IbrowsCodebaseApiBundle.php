@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle;
+namespace Ibrows\Bundle\CodebaseApiBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

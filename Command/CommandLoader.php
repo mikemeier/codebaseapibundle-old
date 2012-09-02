@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command;
 
 class CommandLoader
 {
