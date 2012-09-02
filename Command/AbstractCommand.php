@@ -5,7 +5,6 @@ namespace Ibrows\Bundle\CodebaseApiBundle\Command;
 use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\LoopAndReadHelper;
 use Ibrows\Bundle\CodebaseApiBundle\StoreAndEncryption\StoreAndEncryption;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -14,7 +13,9 @@ use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputDefinition;
 
-abstract class AbstractCommand extends Command
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+
+abstract class AbstractCommand extends ContainerAwareCommand
 {
 
     /**
