@@ -5,19 +5,20 @@
     "keywords":     ["ibrows", "codebase"],
     "type":         "symfony-bundle",
     "license":      "MIT",
-    "authors":      [
+    "authors": [
         {
             "name":     "Mike Meier",
             "homepage": "sk.mykon@gmail.com"
         }
     ],
     
-    "require":      {
-        "ibrows/codebase-api": "*",
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/console": "2.1.*",
         "symfony/framework-bundle": ">=2.0,<2.2-dev"
     },
     
-    "autoload":     {
+    "autoload": {
         "psr-0": { "Ibrows\\Bundle\\CodebaseApiBundle": "" }
     },
     
