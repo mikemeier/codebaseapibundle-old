@@ -1,13 +1,13 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Result\Type\JSON;
+namespace Ibrows\Bundle\CodebaseApiBundle\Result\Type\JSON;
 
-use Ibrows\CodebaseApiBundle\Result\Type\AbstractJSONResult;
-use Ibrows\CodebaseApiBundle\Result\TicketsResultInterface;
-use Ibrows\CodebaseApiBundle\Result\ResultInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Type\AbstractJSONResult;
+use Ibrows\Bundle\CodebaseApiBundle\Result\TicketsResultInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Result\ResultInterface;
 
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\Mapper\ArrayMapper;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\Mapper\ArrayMapper;
 
 class TicketsResult extends AbstractJSONResult implements TicketsResultInterface
 {

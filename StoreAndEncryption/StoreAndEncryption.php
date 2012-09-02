@@ -1,9 +1,9 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\StoreAndEncryption;
+namespace Ibrows\Bundle\CodebaseApiBundle\StoreAndEncryption;
 
-use Ibrows\CodebaseApiBundle\Store\StoreInterface;
-use Ibrows\CodebaseApiBundle\Encryption\EncryptionInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Store\StoreInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Encryption\EncryptionInterface;
 
 class StoreAndEncryption
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Result\Object\Ticket;
+namespace Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket;
 
-use Ibrows\CodebaseApiBundle\Result\Object\AbstractObject;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\AbstractObject;
 
 class TicketPriorityObject extends AbstractObject
 {

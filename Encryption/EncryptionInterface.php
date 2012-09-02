@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Encryption;
+namespace Ibrows\Bundle\CodebaseApiBundle\Encryption;
 
 interface EncryptionInterface
 {

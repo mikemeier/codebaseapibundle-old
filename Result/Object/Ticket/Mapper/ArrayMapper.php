@@ -1,14 +1,14 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Result\Object\Ticket\Mapper;
+namespace Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\Mapper;
 
-use Ibrows\CodebaseApiBundle\Result\ResultInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Result\ResultInterface;
 
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
 
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketCategoryObject;
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketPriorityObject;
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketStatusObject;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketCategoryObject;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketPriorityObject;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketStatusObject;
 
 class ArrayMapper
 {

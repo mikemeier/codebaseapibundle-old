@@ -1,20 +1,20 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Transport\Adapter;
+namespace Ibrows\Bundle\CodebaseApiBundle\Transport\Adapter;
 
-use Ibrows\CodebaseApiBundle\Credentials\Credentials;
-use Ibrows\CodebaseApiBundle\Transport\TransportInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Credentials\Credentials;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\TransportInterface;
 
-use Ibrows\CodebaseApiBundle\Result\ResultInterface;
-use Ibrows\CodebaseApiBundle\Result\ResultFactory;
+use Ibrows\Bundle\CodebaseApiBundle\Result\ResultInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Result\ResultFactory;
 
-use Ibrows\CodebaseApiBundle\Transport\Exception\UnprocessableEntityException;
-use Ibrows\CodebaseApiBundle\Transport\Exception\InvalidStatusCodeException;
-use Ibrows\CodebaseApiBundle\Transport\Exception\NotFoundException;
-use Ibrows\CodebaseApiBundle\Transport\Exception\AccessDeniedException;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\UnprocessableEntityException;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\InvalidStatusCodeException;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\NotFoundException;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\AccessDeniedException;
 
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
-use Ibrows\CodebaseApiBundle\Query\Ticket\TicketOptions;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
+use Ibrows\Bundle\CodebaseApiBundle\Query\Ticket\TicketOptions;
 
 abstract class AbstractAdapter implements TransportInterface
 {

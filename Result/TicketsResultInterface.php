@@ -1,8 +1,8 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Result;
+namespace Ibrows\Bundle\CodebaseApiBundle\Result;
 
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
 
 interface TicketsResultInterface
 {

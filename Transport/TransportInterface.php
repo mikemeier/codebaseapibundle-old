@@ -1,11 +1,11 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Transport;
+namespace Ibrows\Bundle\CodebaseApiBundle\Transport;
 
-use Ibrows\CodebaseApiBundle\Credentials\Credentials;
-use Ibrows\CodebaseApiBundle\Query\Ticket\TicketOptions;
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
-use Ibrows\CodebaseApiBundle\Result\ResultFactory;
+use Ibrows\Bundle\CodebaseApiBundle\Credentials\Credentials;
+use Ibrows\Bundle\CodebaseApiBundle\Query\Ticket\TicketOptions;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
+use Ibrows\Bundle\CodebaseApiBundle\Result\ResultFactory;
 
 interface TransportInterface
 {

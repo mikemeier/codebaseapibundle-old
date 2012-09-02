@@ -1,14 +1,14 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Result\Type\XML;
+namespace Ibrows\Bundle\CodebaseApiBundle\Result\Type\XML;
 
-use Ibrows\CodebaseApiBundle\Result\Type\AbstractXMLResult;
-use Ibrows\CodebaseApiBundle\Result\TicketsResultInterface;
-use Ibrows\CodebaseApiBundle\Result\ResultInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Type\AbstractXMLResult;
+use Ibrows\Bundle\CodebaseApiBundle\Result\TicketsResultInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Result\ResultInterface;
 
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
 
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\Mapper\ArrayMapper;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\Mapper\ArrayMapper;
 
 class TicketsResult extends AbstractXMLResult implements TicketsResultInterface
 {
@@ -18,7 +18,6 @@ class TicketsResult extends AbstractXMLResult implements TicketsResultInterface
      */
     public function getTickets()
     {
-
         $ticketData = array();
         foreach($this->getXML()->ticket as $ticketBag){
             $ticketData[] = $ticketBag;

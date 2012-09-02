@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Result;
+namespace Ibrows\Bundle\CodebaseApiBundle\Result;
 
 interface ResultInterface
 {

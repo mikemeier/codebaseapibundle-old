@@ -1,8 +1,8 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Result\Type;
+namespace Ibrows\Bundle\CodebaseApiBundle\Result\Type;
 
-use Ibrows\CodebaseApiBundle\Result\AbstractResult;
+use Ibrows\Bundle\CodebaseApiBundle\Result\AbstractResult;
 
 abstract class AbstractJSONResult extends AbstractResult
 {

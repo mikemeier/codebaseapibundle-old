@@ -1,8 +1,8 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command\Ticket;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command\Ticket;
 
-use Ibrows\CodebaseApiBundle\Command\AbstractAuthCommand;
+use Ibrows\Bundle\CodebaseApiBundle\Command\AbstractAuthCommand;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

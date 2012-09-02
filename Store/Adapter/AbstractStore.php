@@ -1,8 +1,10 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Store;
+namespace Ibrows\Bundle\CodebaseApiBundle\Store\Adapter;
 
-abstract class AbstractStore implements StoreInterface
+use Ibrows\Bundle\CodebaseApiBundle\Store\StoreInterface;
+
+abstract class AbstractAdapter implements StoreInterface
 {
     
     /**

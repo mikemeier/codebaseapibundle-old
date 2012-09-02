@@ -1,8 +1,8 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command\Helper;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command\Helper;
 
-use Ibrows\CodebaseApiBundle\Command\Helper\Trigger\TriggerInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger\TriggerInterface;
 
 use Symfony\Component\Console\Output\OutputInterface;
 

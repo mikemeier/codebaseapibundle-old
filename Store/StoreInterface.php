@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Store;
+namespace Ibrows\Bundle\CodebaseApiBundle\Store;
 
 interface StoreInterface
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command\Shortcut;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command\Shortcut;
 
-use Ibrows\CodebaseApiBundle\Command\AbstractAuthCommand;
+use Ibrows\Bundle\CodebaseApiBundle\Command\AbstractAuthCommand;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

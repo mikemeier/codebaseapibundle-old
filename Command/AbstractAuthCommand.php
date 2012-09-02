@@ -1,16 +1,16 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command;
 
-use Ibrows\CodebaseApiBundle\Credentials\Credentials;
-use Ibrows\CodebaseApiBundle\StoreAndEncryption;
+use Ibrows\Bundle\CodebaseApiBundle\Credentials\Credentials;
+use Ibrows\Bundle\CodebaseApiBundle\StoreAndEncryption;
 
-use Ibrows\CodebaseApiBundle\Command\Helper\Trigger\TriggerInterface;
-use Ibrows\CodebaseApiBundle\Command\Helper\Trigger\ClosureTrigger;
+use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger\TriggerInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger\ClosureTrigger;
 
-use Ibrows\CodebaseApiBundle\Transport\TransportFactory;
-use Ibrows\CodebaseApiBundle\Transport\TransportInterface;
-use Ibrows\CodebaseApiBundle\Transport\Exception\AccessDeniedException;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\TransportFactory;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\TransportInterface;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\AccessDeniedException;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;

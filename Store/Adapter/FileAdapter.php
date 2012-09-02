@@ -1,8 +1,8 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Store;
+namespace Ibrows\Bundle\CodebaseApiBundle\Store\Adapter;
 
-class FileStore extends AbstractStore
+class FileAdapter extends AbstractStore
 {
     
     /**

@@ -1,17 +1,17 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command\Ticket;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command\Ticket;
 
-use Ibrows\CodebaseApiBundle\Command\AbstractAuthCommand;
-use Ibrows\CodebaseApiBundle\Command\Helper\Trigger\ClosureTrigger;
+use Ibrows\Bundle\CodebaseApiBundle\Command\AbstractAuthCommand;
+use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger\ClosureTrigger;
 
-use Ibrows\CodebaseApiBundle\Query\Ticket\TicketOptions;
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
+use Ibrows\Bundle\CodebaseApiBundle\Query\Ticket\TicketOptions;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
 
-use Ibrows\CodebaseApiBundle\Transport\Exception\UnprocessableEntityException;
-use Ibrows\CodebaseApiBundle\Transport\Exception\InvalidStatusCodeException;
-use Ibrows\CodebaseApiBundle\Transport\Exception\NotFoundException;
-use Ibrows\CodebaseApiBundle\Transport\Exception\AccessDeniedException;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\UnprocessableEntityException;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\InvalidStatusCodeException;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\NotFoundException;
+use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\AccessDeniedException;
 
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 

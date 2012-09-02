@@ -1,11 +1,11 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command\Ticket;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command\Ticket;
 
-use Ibrows\CodebaseApiBundle\Auth\AuthFactory;
-use Ibrows\CodebaseApiBundle\Credentials\Credentials;
-use Ibrows\CodebaseApiBundle\Query\Ticket\TicketOptions;
-use Ibrows\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
+use Ibrows\Bundle\CodebaseApiBundle\Auth\AuthFactory;
+use Ibrows\Bundle\CodebaseApiBundle\Credentials\Credentials;
+use Ibrows\Bundle\CodebaseApiBundle\Query\Ticket\TicketOptions;
+use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

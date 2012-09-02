@@ -1,11 +1,11 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command\Credential;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command\Credential;
 
-use Ibrows\CodebaseApiBundle\Command\AbstractCommand;
+use Ibrows\Bundle\CodebaseApiBundle\Command\AbstractCommand;
 
-use Ibrows\CodebaseApiBundle\Auth\AuthFactory;
-use Ibrows\CodebaseApiBundle\Credentials\Credentials;
+use Ibrows\Bundle\CodebaseApiBundle\Auth\AuthFactory;
+use Ibrows\Bundle\CodebaseApiBundle\Credentials\Credentials;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

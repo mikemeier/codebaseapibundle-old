@@ -1,9 +1,9 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command;
 
-use Ibrows\CodebaseApiBundle\Command\Helper\LoopAndReadHelper;
-use Ibrows\CodebaseApiBundle\StoreAndEncryption\StoreAndEncryption;
+use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\LoopAndReadHelper;
+use Ibrows\Bundle\CodebaseApiBundle\StoreAndEncryption\StoreAndEncryption;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

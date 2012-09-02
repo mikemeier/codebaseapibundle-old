@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Result\Object;
+namespace Ibrows\Bundle\CodebaseApiBundle\Result\Object;
 
 interface ObjectInterface
 {

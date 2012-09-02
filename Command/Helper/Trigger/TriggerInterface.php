@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Command\Helper\Trigger;
+namespace Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger;
 
 interface TriggerInterface
 {

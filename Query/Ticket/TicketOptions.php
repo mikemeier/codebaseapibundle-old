@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Query\Ticket;
+namespace Ibrows\Bundle\CodebaseApiBundle\Query\Ticket;
 
 class TicketOptions
 {

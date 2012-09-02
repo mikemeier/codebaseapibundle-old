@@ -1,6 +1,6 @@
 <?php
 
-namespace Ibrows\CodebaseApiBundle\Credentials\Credentials;
+namespace Ibrows\Bundle\CodebaseApiBundle\Credentials\Credentials;
 
 class Credentials
 {
