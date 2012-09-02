@@ -18,9 +18,10 @@
     },
     
     "autoload":     {
-        "psr-0": { "Ibrows\\CodebaseApiBundle": "" }
+        "psr-0": { "Ibrows\\Bundle\\CodebaseApiBundle": "" }
     },
     
-    "target-dir": "Ibrows/CodebaseApiBundle",
+    "target-dir": "Ibrows/Bundle/CodebaseApiBundle",
+    
     "minimum-stability": "dev"
 }
