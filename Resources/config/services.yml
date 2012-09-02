@@ -1,18 +1,18 @@
 services:
   ibrows.codebaseapi.store.shortcut:
-    class: %ibrows_codebaseapi.store.shortcut.class%
-    arguments: [%ibrows_codebaseapi.store.shortcut.path%]
+    class: %ibrows_codebase_api.store.shortcut.class%
+    arguments: [%ibrows_codebase_api.store.shortcut.path%]
     
   ibrows.codebaseapi.store.credential:
-    class: %ibrows_codebaseapi.store.credential.class%
-    arguments: [%ibrows_codebaseapi.store.credential.path%]
+    class: %ibrows_codebase_api.store.credential.class%
+    arguments: [%ibrows_codebase_api.store.credential.path%]
     
   ibrows.codebaseapi.encryption:
-    class: %ibrows_codebaseapi.encryption.class%
-    arguments: [%ibrows_codebaseapi.encryption.cypher%, %ibrows_codebaseapi.encryption.mode%, %ibrows_codebaseapi.encryption.iv_mode%]
+    class: %ibrows_codebase_api.encryption.class%
+    arguments: [%ibrows_codebase_api.encryption.cypher%, %ibrows_codebase_api.encryption.mode%, %ibrows_codebase_api.encryption.iv_mode%]
     
   ibrows.codebaseapi.storeandecryption.credential:
-    class: %ibrows_codebaseapi.store_and_encryption.class%
+    class: %ibrows_codebase_api.store_and_encryption.class%
     arguments: [@ibrows.codebaseapi.store.credential, @ibrows.codebaseapi.encryption]
     
   ibrows.codebaseapi.storeandecryption.shortcut:
@@ -21,8 +21,8 @@ services:
   
   ibrows.codebaseapi.result.factory:
     class: Ibrows\CodebaseApi\Result\ResultFactory
-    arguments: [%ibrows_codebaseapi.result.factory.type%]
+    arguments: [%ibrows_codebase_api.result.factory.type%]
   
   ibrows.codebaseapi.transport.factory:
     class: Ibrows\CodebaseApi\Transport\TransportFactory
-    arguments: [%ibrows_codebaseapi.uri%, @ibrows.codebaseapi.result.factory]
+    arguments: [%ibrows_codebase_api.uri%, @ibrows.codebaseapi.result.factory]
