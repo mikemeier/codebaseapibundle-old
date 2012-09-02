@@ -16,27 +16,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('knp_menu');
-
-        $rootNode
-            ->children()
-                ->arrayNode('providers')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->booleanNode('builder_alias')->defaultTrue()->end()
-                        ->booleanNode('container_aware')->defaultTrue()->end()
-                    ->end()
-                ->end()
-                ->arrayNode('twig')
-                    ->addDefaultsIfNotSet()
-                    ->canBeUnset()
-                    ->children()
-                        ->scalarNode('template')->defaultValue('knp_menu.html.twig')->end()
-                    ->end()
-                ->end()
-                ->booleanNode('templating')->defaultFalse()->end()
-                ->scalarNode('default_renderer')->cannotBeEmpty()->defaultValue('twig')->end()
-            ->end();
+        $rootNode = $treeBuilder->root('ibrows_codebaseapi');
 
         return $treeBuilder;
     }
