@@ -2,11 +2,11 @@ services:
   
   ibrows.codebaseapi.store.shortcut:
     class: %ibrows_codebase_api.store_shortcut.class%
-    arguments: [%ibrows_codebase_api.store.shortcut.path%]
+    arguments: [%ibrows_codebase_api.store_shortcut.path%]
     
   ibrows.codebaseapi.store.credential:
     class: %ibrows_codebase_api.store_credential.class%
-    arguments: [%ibrows_codebase_api.store.credential.path%]
+    arguments: [%ibrows_codebase_api.store_credential.path%]
     
   ibrows.codebaseapi.encryption:
     class: %ibrows_codebase_api.encryption.class%
