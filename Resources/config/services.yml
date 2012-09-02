@@ -1,0 +1,19 @@
+services:
+  ibrows.codebaseapi.shortcut.store:
+    class: Ibrows\CodebaseApi\Store\FileStore
+    arguments: [%rootdir%/app/cache/shortcuts.txt]
+    
+  ibrows.codebaseapi.credentials.store:
+    class: Ibrows\CodebaseApi\Store\FileStore
+    arguments: [%rootdir%/app/cache/credentials.txt]
+    
+  ibrows.codebaseapi.encryption:
+    class: Ibrows\CodebaseApi\Encryption\Mcrypt
+  
+  ibrows.codebaseapi.result.factory:
+    class: Ibrows\CodebaseApi\Result\ResultFactory
+    arguments: [XML]
+  
+  ibrows.codebaseapi.transport.factory:
+    class: Ibrows\CodebaseApi\Transport\TransportFactory
+    arguments: [%ibrows.codebaseapi.uri%, @ibrows.codebaseapi.result.factory]
