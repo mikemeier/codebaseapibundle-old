@@ -21,7 +21,7 @@ class SaveCredentialsCommand extends AbstractCommand
         parent::configure();
         
         $this
-            ->setName('CodebaseApi:SaveCredentials')
+            ->setName('codebase:credentials:save')
             ->setDescription('Saves Codebase API Credentials')
         
             ->addArgument('username', InputArgument::REQUIRED, 'Codebase API Username')

@@ -23,7 +23,7 @@ class TicketsDoneCommand extends AbstractTicketCommand
         parent::configure();
         
         $this
-            ->setName('CodebaseApi:TicketsDone')
+            ->setName('codebase:tickets:done')
             ->setDescription('Shows Tickets Done')
             ->addOption('updatedate', 'd', InputOption::VALUE_OPTIONAL, 'Date to search for - timetostring parameters allowed', 'now')
             ->addOption('watch', 'w', InputOption::VALUE_NONE, 'Checks every 10 seconds for new Tickets')

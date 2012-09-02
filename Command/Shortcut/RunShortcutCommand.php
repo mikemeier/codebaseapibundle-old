@@ -19,7 +19,7 @@ class RunShortcutCommand extends AbstractAuthCommand
         parent::configure();
         
         $this
-            ->setName('CodebaseApi:RunShortcut')
+            ->setName('codebase:runshortcut')
             ->setDescription('Executes a saved shortcut')
         
             ->addArgument('shortcut', InputArgument::REQUIRED, 'Shortcut name')

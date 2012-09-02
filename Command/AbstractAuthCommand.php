@@ -134,7 +134,7 @@ abstract class AbstractAuthCommand extends AbstractCommand
             }),
                     
             new ClosureTrigger('|^open (\d+)$|', function() use ($self){
-                $command = $self->getApplication()->find('CodebaseApi:OpenTicketInBrowser');
+                $command = $self->getApplication()->find('codebase:ticket:open-in-browser');
                 
                 $arguments = $self->getDefaultNewCommandInputArgs($command, array(
                     'ticketnr' => func_get_arg(0)

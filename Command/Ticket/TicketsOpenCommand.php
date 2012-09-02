@@ -29,7 +29,7 @@ class TicketsOpenCommand extends AbstractTicketCommand
         parent::configure();
         
         $this
-            ->setName('CodebaseApi:TicketsOpen')
+            ->setName('codebase:tickets:open')
             ->setDescription('Shows Tickets Open')
             ->addOption('watch', 'w', InputOption::VALUE_NONE, 'Checks every 10 seconds for new Tickets')
         ;

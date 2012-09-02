@@ -18,7 +18,7 @@ class OpenTicketInBrowserCommand extends AbstractAuthCommand
         parent::configure();
         
         $this
-            ->setName('CodebaseApi:OpenTicketInBrowser')
+            ->setName('codebase:ticket:open-in-browser')
             ->setDescription('Open Ticket in Browser')
             ->addArgument('ticketnr', InputArgument::REQUIRED, 'The Ticket-Number')
         ;

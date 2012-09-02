@@ -21,7 +21,7 @@ class DeleteCredentialsCommand extends AbstractCommand
         parent::configure();
         
         $this
-            ->setName('CodebaseApi:DeleteCredentials')
+            ->setName('codebase:credentials:delete')
             ->setDescription('Deletes Codebase API Credentials')
         ;
     }
