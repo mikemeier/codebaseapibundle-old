@@ -95,7 +95,7 @@ abstract class AbstractAuthCommand extends AbstractCommand
      */
     protected function getTransportFactory()
     {
-        return $this->getContainer()->get('ibrows.codebase.transport.factory');
+        return $this->getContainer()->get('ibrows.codebaseapi.transport.factory');
     }
     
     /**

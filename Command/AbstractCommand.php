@@ -74,7 +74,7 @@ abstract class AbstractCommand extends ContainerAwareCommand
      */
     protected function getCredentialsKey()
     {
-        return $this->getContainer()->getParameter('ibrows.codebase.credentials.key');
+        return $this->getContainer()->getParameter('ibrows.codebaseapi.credentials.key');
     }
     
     /**
@@ -82,7 +82,7 @@ abstract class AbstractCommand extends ContainerAwareCommand
      */
     protected function getCredentialsStore()
     {
-        return $this->getContainer()->get('ibrows.codebase.store.credentials');
+        return $this->getContainer()->get('ibrows.codebaseapi.credentials.storeandecryption');
     }
     
     /**
@@ -90,7 +90,7 @@ abstract class AbstractCommand extends ContainerAwareCommand
      */
     protected function getShortcutStore()
     {
-        return $this->getContainer()->get('ibrows.codebase.store.shortcut');
+        return $this->getContainer()->get('ibrows.codebaseapi.shortcut.storeandecryption');
     }
     
     /**

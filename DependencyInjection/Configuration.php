@@ -1,10 +1,10 @@
 <?php
 
-namespace Ibrows\Bundle\CodebaseApiBundle;
+namespace Ibrows\Bundle\CodebaseApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 class Configuration implements ConfigurationInterface
 {
@@ -16,8 +16,66 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('ibrows_codebaseapi');
+        $rootNode = $treeBuilder->root('ibrows_codebase_api');
 
+        /* @var $rootNode ArrayNodeDefinition */
+        $rootNode
+            ->children()
+                ->scalarNode('uri')
+                    ->defaultValue('http://api3.codebasehq.com/')
+                ->end()
+                ->arrayNode('store')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->arrayNode('credential')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('class')
+                                    ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\Store\\Adapter\\FileAdapter')
+                                ->end()
+                                ->scalarNode('path')
+                                    ->defaultValue('%kernel.root_dir%/cache/codebaseapi/credential.txt')
+                                ->end()
+                            ->end()
+                        ->end()
+                        ->arrayNode('shortcut')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->scalarNode('class')
+                                    ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\Store\\Adapter\\FileAdapter')
+                                ->end()
+                                ->scalarNode('path')
+                                    ->defaultValue('%kernel.root_dir%/cache/codebaseapi/shortcut.txt')
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('encryption')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('class')
+                            ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\Encryption\\Adapter\\McryptAdapter')
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('store_and_encryption')->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('class')
+                            ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\StoreAndEncryption\\StoreAndEncryption')
+                        ->end()
+                    ->end() 
+                ->end()
+                ->arrayNode('result_factory')->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('type')
+                            ->defaultValue('XML')
+                        ->end()
+                    ->end() 
+                ->end()
+            ->end()
+        ;
+        
         return $treeBuilder;
     }
 }
