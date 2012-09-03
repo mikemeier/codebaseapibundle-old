@@ -31,7 +31,7 @@ class ShortcutCommand extends AbstractCommand
         parent::execute($input, $output);
         
         $shortcutStore = $this->getShortcutStore();
-        $shortcutInput = $shortcutStore->get($this->getShortcutPass(), $input->getArgument('shortcut'), false);
+        $shortcutInput = $shortcutStore->get($input->getArgument('shortcut'));
         
         if(!$shortcutInput){
             $output->writeln('<error>Shortcut "'. $input->getArgument('shortcut') .'" not found</error>');
