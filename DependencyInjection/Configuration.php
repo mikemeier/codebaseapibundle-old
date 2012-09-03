@@ -21,9 +21,18 @@ class Configuration implements ConfigurationInterface
         /* @var $rootNode ArrayNodeDefinition */
         $rootNode
             ->children()
+                ->arrayNode('uri')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('api')
+                            ->defaultValue('http://api3.codebasehq.com/')
+                        ->end()
                 
-                ->scalarNode('uri')
-                    ->defaultValue('http://api3.codebasehq.com/')
+                        ->scalarNode('company')
+                            ->isRequired()
+                        ->end()
+                
+                    ->end()
                 ->end()
                 
                 ->arrayNode('store')
