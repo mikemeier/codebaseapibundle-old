@@ -12,7 +12,7 @@
         <service id="ibrows.codebaseapi.transportfactory" class="%ibrows_codebase_api.transportfactory.class%">
             <argument>%ibrows_codebase_api.transportfactory.type%</argument>
             <argument>%ibrows_codebase_api.uri.api%</argument>
-            <argument type="service" id="ibrows.codebaseapi.result.factory"/>
+            <argument type="service" id="ibrows.codebaseapi.resultfactory"/>
         </service>
     </services>
 </container>
