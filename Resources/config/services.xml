@@ -24,7 +24,7 @@
             <argument type="service" id="ibrows.codebaseapi.encryption"/>
         </service>
         <service id="ibrows.codebaseapi.result.factory" class="Ibrows\CodebaseApi\Result\ResultFactory">
-            <argument>%ibrows_codebase_api.result.factory.type%</argument>
+            <argument>%ibrows_codebase_api.resultfactory.type%</argument>
         </service>
         <service id="ibrows.codebaseapi.transport.factory" class="Ibrows\CodebaseApi\Transport\TransportFactory">
             <argument>%ibrows_codebase_api.uri%</argument>

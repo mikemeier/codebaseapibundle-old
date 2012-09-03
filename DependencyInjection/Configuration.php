@@ -89,7 +89,7 @@ class Configuration implements ConfigurationInterface
                     ->end() 
                 ->end()
                 
-                ->arrayNode('result_factory')
+                ->arrayNode('resultfactory')
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('type')
