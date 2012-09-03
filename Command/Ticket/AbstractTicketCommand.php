@@ -15,6 +15,7 @@ use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\NotFoundException;
 use Ibrows\Bundle\CodebaseApiBundle\Transport\Exception\AccessDeniedException;
 
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use Symfony\Component\Console\Input\ArrayInput;
 
 abstract class AbstractTicketCommand extends AbstractAuthCommand
 {
