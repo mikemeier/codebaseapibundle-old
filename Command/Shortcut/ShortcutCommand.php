@@ -11,13 +11,15 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\ArrayInput;
 
-class RunShortcutCommand extends AbstractCommand
+class ShortcutCommand extends AbstractCommand
 {
     
     protected function configure()
     {
+        parent::configure();
+        
         $this
-            ->setName('codebase:runshortcut')
+            ->setName('codebase:shortcut')
             ->setDescription('Executes a saved shortcut')
         
             ->addArgument('shortcut', InputArgument::REQUIRED, 'Shortcut name')
