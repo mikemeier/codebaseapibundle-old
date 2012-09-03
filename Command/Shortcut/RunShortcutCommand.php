@@ -2,7 +2,7 @@
 
 namespace Ibrows\Bundle\CodebaseApiBundle\Command\Shortcut;
 
-use Ibrows\Bundle\CodebaseApiBundle\Command\AbstractAuthCommand;
+use Ibrows\Bundle\CodebaseApiBundle\Command\AbstractCommand;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\ArrayInput;
 
-class RunShortcutCommand extends AbstractAuthCommand
+class RunShortcutCommand extends AbstractCommand
 {
     
     protected function configure()
