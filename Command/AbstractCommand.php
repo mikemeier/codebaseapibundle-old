@@ -28,12 +28,71 @@ abstract class AbstractCommand extends ContainerAwareCommand
      */
     protected $output;
     
+    protected function configure()
+    {
+        $this
+            ->addOption('recordname', 'r', InputOption::VALUE_REQUIRED, 'Records the current input')
+            ->addOption('passphrase', 'p', InputOption::VALUE_REQUIRED, 'Passphrase for Encryption')
+        ;
+    }
+    
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output 
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
         $this->output = $output;
         
-        $this->setOutputStyles();     
+        $this->setOutputStyles();
+        
+        $this->saveInputIfOptionIsSet();
+    }
+    
+    /**
+     * @return string 
+     */
+    protected function getPassphrase()
+    {
+        return $this->getInput()->getOption('passphrase');
+    }
+    
+    protected function saveInputIfOptionIsSet()
+    {
+        $input = $this->getInput();
+        $saveInputname = $input->getOption('recordname');
+        
+        if(!$saveInputname){
+            return;
+        }
+        
+        $passphrase = $this->getPassphrase();
+            
+        if(!$passphrase){
+            throw new \InvalidArgumentException("Need passphrase option for encryption");
+        }
+
+        $input->setOption('recordname', false);
+
+        $arguments = array();
+        foreach($input->getArguments() as $key => $value){
+            $arguments[$key] = $value;
+        }
+
+        $saveInput = new ArrayInput($arguments, $this->getDefinition());
+
+        foreach($input->getOptions() as $key => $value){
+            $saveInput->setOption($key, $value);
+        }
+
+        $data = serialize($saveInput);
+
+        $shortcutStore = $this->getShortcutStore();
+        $shortcutStore->set($passphrase, $saveInputname, $data);
+        $shortcutStore->flush();
+
+        $this->getOutput()->writeln('<info>Shortcut "'. $saveInputname .'" saved</info>');
     }
     
     /**
@@ -77,7 +136,7 @@ abstract class AbstractCommand extends ContainerAwareCommand
      */
     protected function getCredentialsKey()
     {
-        return $this->getContainer()->getParameter('ibrows.codebaseapi.credentials.key');
+        return 'credentials';
     }
     
     /**

@@ -36,9 +36,7 @@ abstract class AbstractAuthCommand extends AbstractCommand
                 
             ->addOption('username', 'u', InputOption::VALUE_OPTIONAL, 'Codebase API Username')
             ->addOption('key', 'k', InputOption::VALUE_OPTIONAL, 'Codebase API Key')
-            ->addOption('passphrase', 'p', InputOption::VALUE_OPTIONAL, 'Passphrase for Credentials Decryption')
             ->addOption('transport', 't', InputOption::VALUE_OPTIONAL, 'Transport for Communication', 'curl')
-            ->addOption('recordname', 'r', InputOption::VALUE_REQUIRED, 'Records the current input')
         ;
     }
     
@@ -56,38 +54,6 @@ abstract class AbstractAuthCommand extends AbstractCommand
             $input->getOption('transport'), 
             $credentials
         );
-        
-        $this->saveInputIfOptionIsSet(md5($credentials->getKey()));
-    }
-    
-    protected function saveInputIfOptionIsSet($pass)
-    {
-        $input = $this->getInput();
-        $saveInputname = $input->getOption('recordname');
-        
-        if($saveInputname){
-            
-            $input->setOption('recordname', false);
-            
-            $arguments = array();
-            foreach($input->getArguments() as $key => $value){
-                $arguments[$key] = $value;
-            }
-
-            $saveInput = new ArrayInput($arguments, $this->getDefinition());
-            
-            foreach($input->getOptions() as $key => $value){
-                $saveInput->setOption($key, $value);
-            }
-            
-            $data = serialize($saveInput);
-            
-            $shortcutStore = $this->getShortcutStore();
-            $shortcutStore->set($pass, $saveInputname, $data);
-            $shortcutStore->flush();
-            
-            $this->getOutput()->writeln('<info>Shortcut "'. $saveInputname .'" saved</info>');
-        }
     }
     
     /**
@@ -168,12 +134,13 @@ abstract class AbstractAuthCommand extends AbstractCommand
      */
     protected function getCredentialsFromInput()
     {
-        $input = $this->getInput();
-        $output = $this->getOutput();
+        $passphrase = $this->getPassphrase();
         
-        if($input->getOption('passphrase')){
-            return $this->getCredentialsFromStore($input->getOption('passphrase'), $output);
+        if($passphrase){
+            return $this->getCredentialsFromStore($passphrase, $output);
         }
+        
+        $input = $this->getInput();
         
         $username = $input->getOption('username');
         $key = $input->getOption('key');
