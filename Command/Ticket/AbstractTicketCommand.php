@@ -4,6 +4,7 @@ namespace Ibrows\Bundle\CodebaseApiBundle\Command\Ticket;
 
 use Ibrows\Bundle\CodebaseApiBundle\Command\AbstractAuthCommand;
 use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger\ClosureTrigger;
+use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger\TriggerArgs;
 
 use Ibrows\Bundle\CodebaseApiBundle\Query\Ticket\TicketOptions;
 use Ibrows\Bundle\CodebaseApiBundle\Result\Object\Ticket\TicketObject;
