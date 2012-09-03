@@ -3,29 +3,14 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="ibrows.codebaseapi.store.shortcut" class="%ibrows_codebase_api.store.shortcut.class%">
+        <service id="ibrows.codebaseapi.shurtcutstore" class="%ibrows_codebase_api.store.shortcut.class%">
             <argument>%ibrows_codebase_api.store.shortcut.path%</argument>
         </service>
-        <service id="ibrows.codebaseapi.store.credential" class="%ibrows_codebase_api.store.credential.class%">
-            <argument>%ibrows_codebase_api.store.credential.path%</argument>
-        </service>
-        <service id="ibrows.codebaseapi.encryption" class="%ibrows_codebase_api.encryption.class%">
-            <argument>%ibrows_codebase_api.encryption.cypher%</argument>
-            <argument>%ibrows_codebase_api.encryption.mode%</argument>
-            <argument>%ibrows_codebase_api.encryption.iv_mode%</argument>
-        </service>
-        <service id="ibrows.codebaseapi.storeandecryption.credential" class="%ibrows_codebase_api.store_and_encryption.class%">
-            <argument type="service" id="ibrows.codebaseapi.store.credential"/>
-            <argument type="service" id="ibrows.codebaseapi.encryption"/>
-        </service>
-        <service id="ibrows.codebaseapi.storeandecryption.shortcut" class="%ibrows_codebase_api.store_and_encryption.class%">
-            <argument type="service" id="ibrows.codebaseapi.store.shortcut"/>
-            <argument type="service" id="ibrows.codebaseapi.encryption"/>
-        </service>
-        <service id="ibrows.codebaseapi.result.factory" class="Ibrows\Bundle\CodebaseApiBundle\Result\ResultFactory">
+        <service id="ibrows.codebaseapi.resultfactory" class="%ibrows_codebase_api.resultfactory.class%">
             <argument>%ibrows_codebase_api.resultfactory.type%</argument>
         </service>
-        <service id="ibrows.codebaseapi.transport.factory" class="Ibrows\Bundle\CodebaseApiBundle\Transport\TransportFactory">
+        <service id="ibrows.codebaseapi.transportfactory" class="%ibrows_codebase_api.transportfactory.class%">
+            <argument>%ibrows_codebase_api.transportfactory.type%</argument>
             <argument>%ibrows_codebase_api.uri.api%</argument>
             <argument type="service" id="ibrows.codebaseapi.result.factory"/>
         </service>

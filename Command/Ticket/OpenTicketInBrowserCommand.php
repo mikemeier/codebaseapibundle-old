@@ -20,6 +20,7 @@ class OpenTicketInBrowserCommand extends AbstractCommand
         $this
             ->setName('codebase:ticket:open-in-browser')
             ->setDescription('Open Ticket in Browser')
+                
             ->addArgument('projectname', InputArgument::REQUIRED, 'Codebase Project Name')
             ->addArgument('ticketnr', InputArgument::REQUIRED, 'The Ticket-Number')
         ;

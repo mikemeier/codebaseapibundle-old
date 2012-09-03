@@ -24,11 +24,27 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('uri')
                     ->addDefaultsIfNotSet()
                     ->children()
+                
                         ->scalarNode('api')
                             ->defaultValue('http://api3.codebasehq.com/')
                         ->end()
                 
                         ->scalarNode('company')
+                            ->isRequired()
+                        ->end()
+                
+                    ->end()
+                ->end()
+                
+                ->arrayNode('credentials')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                
+                        ->scalarNode('user')
+                            ->isRequired()
+                        ->end()
+                
+                        ->scalarNode('key')
                             ->isRequired()
                         ->end()
                 
@@ -43,71 +59,51 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                 
-                        ->arrayNode('credential')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\Store\\Adapter\\FileAdapter')
-                                ->end()
-                                ->scalarNode('path')
-                                    ->defaultValue('%kernel.root_dir%/cache/codebaseapi/credential.txt')
-                                ->end()
-                            ->end()
-                        ->end()
-                
                         ->arrayNode('shortcut')
                             ->addDefaultsIfNotSet()
                             ->children()
+                
                                 ->scalarNode('class')
                                     ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\Store\\Adapter\\FileAdapter')
                                 ->end()
+                
                                 ->scalarNode('path')
-                                    ->defaultValue('%kernel.root_dir%/cache/codebaseapi/shortcut.txt')
+                                    ->defaultValue('%kernel.root_dir%/cache/codebaseapi/shortcuts.txt')
                                 ->end()
+                
                             ->end()
                         ->end()
                         
                     ->end()
                 ->end()
                 
-                ->arrayNode('encryption')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                
-                        ->scalarNode('class')
-                            ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\Encryption\\Adapter\\McryptAdapter')
-                        ->end()
-                
-                        ->scalarNode('cypher')
-                            ->defaultValue(MCRYPT_RIJNDAEL_256)
-                        ->end()
-                
-                        ->scalarNode('mode')
-                            ->defaultValue(MCRYPT_MODE_ECB)
-                        ->end()
-                
-                        ->scalarNode('iv_mode')
-                            ->defaultValue(MCRYPT_RAND)
-                        ->end()
-                
-                    ->end()
-                ->end()
-                
-                ->arrayNode('store_and_encryption')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('class')
-                            ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\StoreAndEncryption\\StoreAndEncryption')
-                        ->end()
-                    ->end() 
-                ->end()
-                
                 ->arrayNode('resultfactory')
                     ->addDefaultsIfNotSet()
                     ->children()
+                
+                        ->scalarNode('class')
+                            ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\Result\\ResultFactory')
+                        ->end()
+                
                         ->scalarNode('type')
                             ->defaultValue('XML')
                         ->end()
+                
+                    ->end() 
+                ->end()
+                
+                ->arrayNode('transportfactory')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                
+                        ->scalarNode('class')
+                            ->defaultValue('Ibrows\\Bundle\\CodebaseApiBundle\\Transport\\TransportFactory')
+                        ->end()
+                
+                        ->scalarNode('type')
+                            ->defaultValue('curl')
+                        ->end()
+
                     ->end() 
                 ->end()
                 

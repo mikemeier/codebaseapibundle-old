@@ -11,6 +11,11 @@ class TransportFactory
     /**
      * @var string 
      */
+    protected $type;
+    
+    /**
+     * @var string 
+     */
     protected $baseUri;
     
     /**
@@ -21,8 +26,9 @@ class TransportFactory
     /**
      * @param string $baseUri 
      */
-    public function __construct($baseUri, ResultFactory $resultFactory)
+    public function __construct($type, $baseUri, ResultFactory $resultFactory)
     {
+        $this->type = $type;
         $this->baseUri = $baseUri;
         $this->resultFactory = $resultFactory;
     }
@@ -41,9 +47,9 @@ class TransportFactory
      * @return AuthInterface
      * @throws \InvalidArgumentException 
      */
-    public function getInstance($type, Credentials $credentials)
+    public function getInstance(Credentials $credentials)
     {
-        $className = __NAMESPACE__ .'\\Adapter\\'. ucfirst($type) .'Adapter';
+        $className = __NAMESPACE__ .'\\Adapter\\'. ucfirst($this->type) .'Adapter';
         if(!class_exists($className)){
             throw new \InvalidArgumentException('Transport "'. $className .'" not found');
         }

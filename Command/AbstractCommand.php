@@ -3,7 +3,8 @@
 namespace Ibrows\Bundle\CodebaseApiBundle\Command;
 
 use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\LoopAndReadHelper;
-use Ibrows\Bundle\CodebaseApiBundle\StoreAndEncryption\StoreAndEncryption;
+use Ibrows\Bundle\CodebaseApiBundle\Credentials\Credentials;
+use Ibrows\Bundle\CodebaseApiBundle\Store\StoreInterface;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -28,11 +29,15 @@ abstract class AbstractCommand extends ContainerAwareCommand
      */
     protected $output;
     
+    /**
+     * @var Credentials 
+     */
+    protected $credentials;
+    
     protected function configure()
     {
         $this
             ->addOption('recordname', 'r', InputOption::VALUE_REQUIRED, 'Records the current input')
-            ->addOption('passphrase', 'p', InputOption::VALUE_REQUIRED, 'Passphrase for Encryption')
         ;
     }
     
@@ -45,17 +50,22 @@ abstract class AbstractCommand extends ContainerAwareCommand
         $this->input = $input;
         $this->output = $output;
         
+        $this->credentials = new Credentials(
+            $this->getContainer()->getParameter('ibrows_codebase_api.credentials.user'), 
+            $this->getContainer()->getParameter('ibrows_codebase_api.credentials.key')
+        );
+        
         $this->setOutputStyles();
         
         $this->saveInputIfOptionIsSet();
     }
     
     /**
-     * @return string 
+     * @return Credentials 
      */
-    protected function getPassphrase()
+    protected function getCredentials()
     {
-        return $this->getInput()->getOption('passphrase');
+        return $this->credentials;
     }
     
     protected function saveInputIfOptionIsSet()
@@ -65,12 +75,6 @@ abstract class AbstractCommand extends ContainerAwareCommand
         
         if(!$saveInputname){
             return;
-        }
-        
-        $passphrase = $this->getPassphrase();
-            
-        if(!$passphrase){
-            throw new \InvalidArgumentException("Need passphrase option for encryption");
         }
 
         $input->setOption('recordname', false);
@@ -89,7 +93,7 @@ abstract class AbstractCommand extends ContainerAwareCommand
         $data = serialize($saveInput);
 
         $shortcutStore = $this->getShortcutStore();
-        $shortcutStore->set($passphrase, $saveInputname, $data);
+        $shortcutStore->set($saveInputname, $data);
         $shortcutStore->flush();
 
         $this->getOutput()->writeln('<info>Shortcut "'. $saveInputname .'" saved</info>');
@@ -132,27 +136,11 @@ abstract class AbstractCommand extends ContainerAwareCommand
     }
     
     /**
-     * @return string 
-     */
-    protected function getCredentialsKey()
-    {
-        return 'credentials';
-    }
-    
-    /**
-     * @return StoreAndEncryption 
-     */
-    protected function getCredentialsStore()
-    {
-        return $this->getContainer()->get('ibrows.codebaseapi.storeandecryption.credential');
-    }
-    
-    /**
-     * @return StoreAndEncryption 
+     * @return StoreInterface 
      */
     protected function getShortcutStore()
     {
-        return $this->getContainer()->get('ibrows.codebaseapi.storeandecryption.shortcut');
+        return $this->getContainer()->get('ibrows.codebaseapi.shurtcutstore');
     }
     
     /**

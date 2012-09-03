@@ -16,8 +16,6 @@ class RunShortcutCommand extends AbstractCommand
     
     protected function configure()
     {
-        parent::configure();
-        
         $this
             ->setName('codebase:runshortcut')
             ->setDescription('Executes a saved shortcut')
@@ -30,13 +28,8 @@ class RunShortcutCommand extends AbstractCommand
     {
         parent::execute($input, $output);
         
-        $passphrase = $input->getOption('passphrase');
-        if(!$passphrase){
-            throw new \InvalidArgumentException("Need passphrase option for encryption");
-        }
-        
         $shortcutStore = $this->getShortcutStore();
-        $shortcutInput = $shortcutStore->get($passphrase, $input->getArgument('shortcut'), false);
+        $shortcutInput = $shortcutStore->get($this->getShortcutPass(), $input->getArgument('shortcut'), false);
         
         if(!$shortcutInput){
             $output->writeln('<error>Shortcut "'. $input->getArgument('shortcut') .'" not found</error>');
@@ -60,7 +53,7 @@ class RunShortcutCommand extends AbstractCommand
         $shortcutInput = @unserialize($shortcutInput);
         
         if(false === $shortcutInput){
-            $output->writeln('<error>Passphrase wrong, couldnt decrypt shortcut</error>');
+            $output->writeln('<error>Credentials wrong, couldnt decrypt shortcut</error>');
             return;
         }
         
