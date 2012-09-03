@@ -124,11 +124,12 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
                 $command->run(new ArrayInput($arguments), $self->getOutput());
             }),
                     
-            new ClosureTrigger('|^close (\d+)$|', function(TriggerArgs $args) use ($self){
+            new ClosureTrigger('|^close (\d+) ?(\w+)?$|', function(TriggerArgs $args) use ($self){
                 $command = $self->getApplication()->find('codebase:ticket:close');
                 
                 $arguments = $self->getDefaultNewCommandInputArgs($command, array(
-                    'ticketnr' => $args->getArg(0)
+                    'ticketnr' => $args->getArg(0),
+                    'message' => $args->getArg(1)
                 ));
 
                 $command->run(new ArrayInput($arguments), $self->getOutput());
