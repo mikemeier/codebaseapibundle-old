@@ -55,6 +55,10 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue(20)
                 ->end()
                 
+                ->scalarNode('projectname')
+                    
+                ->end()
+                
                 ->arrayNode('store')
                     ->addDefaultsIfNotSet()
                     ->children()

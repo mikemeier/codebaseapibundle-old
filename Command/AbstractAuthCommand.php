@@ -20,15 +20,6 @@ use Symfony\Component\Console\Command\Command;
 abstract class AbstractAuthCommand extends AbstractCommand
 {
     
-    protected function configure()
-    {
-        parent::configure();
-        
-        $this
-            ->addArgument('projectname', InputArgument::REQUIRED, 'Codebase Project Name')
-        ;
-    }
-    
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         parent::execute($input, $output);
@@ -44,14 +35,6 @@ abstract class AbstractAuthCommand extends AbstractCommand
     protected function getTransportFactory()
     {
         return $this->getContainer()->get('ibrows.codebaseapi.transportfactory');
-    }
-    
-    /**
-     * @return string 
-     */
-    protected function getProjectName()
-    {
-        return $this->getInput()->getArgument('projectname');
     }
     
     /**

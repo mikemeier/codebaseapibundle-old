@@ -21,7 +21,6 @@ class OpenTicketInBrowserCommand extends AbstractCommand
             ->setName('codebase:ticket:open-in-browser')
             ->setDescription('Open Ticket in Browser')
                 
-            ->addArgument('projectname', InputArgument::REQUIRED, 'Codebase Project Name')
             ->addArgument('ticketnr', InputArgument::REQUIRED, 'The Ticket-Number')
         ;
     }
@@ -35,7 +34,7 @@ class OpenTicketInBrowserCommand extends AbstractCommand
         }
         
         $ticketUri = $this->getContainer()->getParameter('ibrows_codebase_api.uri.company') . 
-            $input->getArgument('projectname').'/tickets/'. (int)$input->getArgument('ticketnr');
+            $this->getProjectName() . '/tickets/'. (int)$input->getArgument('ticketnr');
 
         $output->writeln(shell_exec('open '. escapeshellarg($ticketUri)));
     }
