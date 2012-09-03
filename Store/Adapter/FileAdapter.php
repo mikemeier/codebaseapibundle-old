@@ -2,7 +2,7 @@
 
 namespace Ibrows\Bundle\CodebaseApiBundle\Store\Adapter;
 
-class FileAdapter extends AbstractStore
+class FileAdapter extends AbstractAdapter
 {
     
     /**
