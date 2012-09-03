@@ -49,7 +49,6 @@ class TicketsDoneCommand extends AbstractTicketCommand
         }
         
         $this->getNewLoopAndReaderHelper()
-            ->setLoopInterval(10)
             ->setLoopClosure($this->getLoopClosure())
             ->run()
         ;

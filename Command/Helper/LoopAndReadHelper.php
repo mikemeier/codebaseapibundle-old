@@ -12,7 +12,7 @@ class LoopAndReadHelper
     /**
      * @var integer $loopInterval 
      */
-    protected $loopInterval = 10;
+    protected $loopInterval;
     
     /**
      * @var \Closure 
@@ -29,9 +29,18 @@ class LoopAndReadHelper
      */
     protected $output;
 
-    public function __construct(OutputInterface $output)
+    /**
+     * @param OutputInterface $output
+     * @param integer $loopInterval
+     * @throws \InvalidArgumentException 
+     */
+    public function __construct(OutputInterface $output, $loopInterval = 20)
     {
         $this->output = $output;
+        $this->loopInterval = (int)$loopInterval;
+        if($loopInterval < 10){
+            throw new \InvalidArgumentException("LoopInterval has to be at minimum 10s");
+        }
     }
     
     /**

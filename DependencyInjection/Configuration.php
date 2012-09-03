@@ -35,6 +35,10 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 
+                ->scalarNode('loopinterval')
+                    ->defaultValue(20)
+                ->end()
+                
                 ->arrayNode('store')
                     ->addDefaultsIfNotSet()
                     ->children()

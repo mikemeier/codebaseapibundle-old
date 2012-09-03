@@ -41,7 +41,10 @@ abstract class AbstractCommand extends ContainerAwareCommand
      */
     protected function getNewLoopAndReaderHelper()
     {
-        $helper = new LoopAndReadHelper($this->getOutput());
+        $helper = new LoopAndReadHelper(
+            $this->getOutput(),
+            $this->getContainer()->getParameter('ibrows_codebase_api.loopinterval')
+        );
         $helper->setTriggers($this->getTriggers());
         
         return $helper;
