@@ -25,10 +25,10 @@
             <argument type="service" id="ibrows.codebaseapi.store.shortcut"/>
             <argument type="service" id="ibrows.codebaseapi.encryption"/>
         </service>
-        <service id="ibrows.codebaseapi.result.factory" class="Ibrows\CodebaseApi\Result\ResultFactory">
+        <service id="ibrows.codebaseapi.result.factory" class="Ibrows\Bundle\CodebaseApiBundle\Result\ResultFactory">
             <argument>%ibrows_codebase_api.resultfactory.type%</argument>
         </service>
-        <service id="ibrows.codebaseapi.transport.factory" class="Ibrows\CodebaseApi\Transport\TransportFactory">
+        <service id="ibrows.codebaseapi.transport.factory" class="Ibrows\Bundle\CodebaseApiBundle\Transport\TransportFactory">
             <argument>%ibrows_codebase_api.uri.api%</argument>
             <argument type="service" id="ibrows.codebaseapi.result.factory"/>
         </service>
