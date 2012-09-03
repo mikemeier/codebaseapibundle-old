@@ -18,7 +18,7 @@ class TriggerArgs
     public function __construct(TriggerInterface $trigger, array $args)
     {
         $this->trigger = $trigger;
-        $this->args = $args;
+        $this->args = array_values($args);
     }
     
     /**
