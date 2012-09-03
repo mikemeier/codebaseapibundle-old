@@ -20,7 +20,7 @@
             <argument type="service" id="ibrows.codebaseapi.encryption"/>
         </service>
         <service id="ibrows.codebaseapi.storeandecryption.shortcut" class="%ibrows_codebase_api.store_and_encryption.class%">
-            <argument type="service" id="ibrows.codebaseapi.store.shortcut,"/>
+            <argument type="service" id="ibrows.codebaseapi.store.shortcut"/>
             <argument type="service" id="ibrows.codebaseapi.encryption"/>
         </service>
         <service id="ibrows.codebaseapi.result.factory" class="Ibrows\CodebaseApi\Result\ResultFactory">
