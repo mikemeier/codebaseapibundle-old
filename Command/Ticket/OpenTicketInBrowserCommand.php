@@ -32,7 +32,7 @@ class OpenTicketInBrowserCommand extends AbstractAuthCommand
             return $output->writeln('<error>Windows not supported yet</error>');
         }
         
-        $ticketUri = $this->getContainer()->getParameter('ibrows_codebaseapi.uri.company') . 
+        $ticketUri = $this->getContainer()->getParameter('ibrows_codebase_api.uri.company') . 
             $this->getProjectName($input).'/tickets/'. (int)$input->getArgument('ticketnr');
 
         $output->writeln(shell_exec('open '. escapeshellarg($ticketUri)));
