@@ -38,19 +38,8 @@ abstract class AbstractCommand extends ContainerAwareCommand
     {
         $this
             ->addOption('recordname', 'r', InputOption::VALUE_REQUIRED, 'Records the current input')
+            ->addOption('projectname', 'p', InputOption::VALUE_REQUIRED, 'Codebase Project Name')
         ;
-        
-        $projectName = $this->getDefaultProjectName();
-        
-        if($projectName){
-            $this
-                ->addOption('projectname', 'p', InputOption::VALUE_REQUIRED, 'Codebase Project Name', $projectName)
-            ;
-        }else{
-            $this
-                ->addArgument('projectname', InputArgument::REQUIRED, 'Projectname from Codebase')
-            ;
-        }
     }
     
     /**
@@ -72,21 +61,23 @@ abstract class AbstractCommand extends ContainerAwareCommand
         $this->saveInputIfOptionIsSet();
     }
     
-    protected function getDefaultProjectName()
-    {
-        return $this->getContainer()->getParameter('ibrows_codebase_api.projectname');
-    }
-    
     /**
      * @return string 
      */
     protected function getProjectName()
     {
-        if($this->getDefaultProjectName()){
-            return $this->getInput()->getOption('projectname');
+        $option = $this->getInput()->getOption('projectname');
+        if($option){
+            return $option;
         }
         
-        return $this->getInput()->getArgument('projectname');
+        $projectName = $this->getContainer()->getParameter('ibrows_codebase_api.projectname');
+        
+        if(!$projectName){
+            throw new \InvalidArgumentException("Need projectname option or 'ibrows_codebase_api.projectname' Parameter (parameters.yml e.g.)");
+        }
+        
+        return $projectName;
     }
     
     /**
