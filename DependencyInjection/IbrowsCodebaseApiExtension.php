@@ -25,9 +25,9 @@ class IbrowsCodebaseApiExtension extends Extension
     
     protected function registerContainerParametersRecursive(ContainerBuilder $container, $alias, $config)
     {
-        $iterator = new RecursiveIteratorIterator(
-            new RecursiveArrayIterator($config), 
-            RecursiveIteratorIterator::SELF_FIRST
+        $iterator = new \RecursiveIteratorIterator(
+            new \RecursiveArrayIterator($config), 
+            \RecursiveIteratorIterator::SELF_FIRST
         );
         
         foreach($iterator as $value){
