@@ -14,6 +14,8 @@ use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputDefinition;
 
+use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 
 abstract class AbstractCommand extends ContainerAwareCommand
@@ -71,7 +73,9 @@ abstract class AbstractCommand extends ContainerAwareCommand
             return $option;
         }
         
-        $projectName = $this->getContainer()->getParameter('ibrows_codebase_api.projectname');
+        try {
+            $projectName = $this->getContainer()->getParameter('ibrows_codebase_api.projectname');
+        }catch(InvalidArgumentException $e){}
         
         if(!$projectName){
             throw new \InvalidArgumentException("Need projectname option or 'ibrows_codebase_api.projectname' Parameter (parameters.yml e.g.)");
