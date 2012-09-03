@@ -42,15 +42,7 @@ class TicketsOpenCommand extends AbstractTicketCommand
         $watch = $this->getInput()->getOption('watch');
         
         if(!$watch){            
-            $this->outputOptions();
-            
-            $tickets = $this->getTickets();
-            $this->outputTickets($tickets);
-            
-            if(count($tickets) == 0){
-                $output->writeln('<info>No Tickets found</info>');
-            }
-            
+            $this->outputOptionsAndTickets();
             return;
         }
         
