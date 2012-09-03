@@ -2,7 +2,7 @@
 
 namespace Ibrows\Bundle\CodebaseApiBundle\Command\Ticket;
 
-use Ibrows\Bundle\CodebaseApiBundle\Command\AbstractAuthCommand;
+use Ibrows\Bundle\CodebaseApiBundle\Command\AbstractCommand;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class OpenTicketInBrowserCommand extends AbstractAuthCommand
+class OpenTicketInBrowserCommand extends AbstractCommand
 {
     
     protected function configure()
@@ -20,6 +20,7 @@ class OpenTicketInBrowserCommand extends AbstractAuthCommand
         $this
             ->setName('codebase:ticket:open-in-browser')
             ->setDescription('Open Ticket in Browser')
+            ->addArgument('projectname', InputArgument::REQUIRED, 'Codebase Project Name')
             ->addArgument('ticketnr', InputArgument::REQUIRED, 'The Ticket-Number')
         ;
     }
@@ -33,7 +34,7 @@ class OpenTicketInBrowserCommand extends AbstractAuthCommand
         }
         
         $ticketUri = $this->getContainer()->getParameter('ibrows_codebase_api.uri.company') . 
-            $this->getProjectName($input).'/tickets/'. (int)$input->getArgument('ticketnr');
+            $input->getArgument('projectname').'/tickets/'. (int)$input->getArgument('ticketnr');
 
         $output->writeln(shell_exec('open '. escapeshellarg($ticketUri)));
     }
