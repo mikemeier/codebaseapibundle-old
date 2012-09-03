@@ -2,6 +2,8 @@
 
 namespace Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger;
 
+use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\LoopAndReadHelper;
+
 interface TriggerInterface
 {
     
@@ -20,5 +22,16 @@ interface TriggerInterface
      * @return string $name 
      */
     public function getName();
+    
+    /**
+     * @param LoopAndReadHelper
+     * @return TriggerInterface
+     */
+    public function setLoopAndReadHelper(LoopAndReadHelper $helper);
+    
+    /**
+     * @return LoopAndReadHelper 
+     */
+    public function getLoopAndReadHelper();
     
 }

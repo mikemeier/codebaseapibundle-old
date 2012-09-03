@@ -4,6 +4,7 @@ namespace Ibrows\Bundle\CodebaseApiBundle\Command;
 
 use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger\TriggerInterface;
 use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger\ClosureTrigger;
+use Ibrows\Bundle\CodebaseApiBundle\Command\Helper\Trigger\TriggerArgs;
 
 use Ibrows\Bundle\CodebaseApiBundle\Transport\TransportFactory;
 use Ibrows\Bundle\CodebaseApiBundle\Transport\TransportInterface;
@@ -80,15 +81,15 @@ abstract class AbstractAuthCommand extends AbstractCommand
         $self = $this;
         
         return array_merge(parent::getTriggers(), array(
-            new ClosureTrigger('|^stop$|', function(){
-                die();
+            new ClosureTrigger('|^stop$|', function(TriggerArgs $args){
+                $args->getTrigger()->getLoopAndReadHelper()->stop();
             }),
                     
-            new ClosureTrigger('|^open (\d+)$|', function() use ($self){
+            new ClosureTrigger('|^open (\d+)$|', function(TriggerArgs $args) use ($self){
                 $command = $self->getApplication()->find('codebase:ticket:open-in-browser');
                 
                 $arguments = $self->getDefaultNewCommandInputArgs($command, array(
-                    'ticketnr' => func_get_arg(0)
+                    'ticketnr' => $args->getArg(0)
                 ));
 
                 $command->run(new ArrayInput($arguments), $self->getOutput());

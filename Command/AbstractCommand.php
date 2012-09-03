@@ -108,6 +108,7 @@ abstract class AbstractCommand extends ContainerAwareCommand
             $this->getOutput(),
             $this->getContainer()->getParameter('ibrows_codebase_api.loopinterval')
         );
+        
         $helper->setTriggers($this->getTriggers());
         
         return $helper;

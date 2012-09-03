@@ -28,6 +28,11 @@ class LoopAndReadHelper
      * @var OutputInterface 
      */
     protected $output;
+    
+    /**
+     * @var boolean 
+     */
+    protected $stop = false;
 
     /**
      * @param OutputInterface $output
@@ -38,6 +43,7 @@ class LoopAndReadHelper
     {
         $this->output = $output;
         $this->loopInterval = (int)$loopInterval;
+        
         if($loopInterval < 10){
             throw new \InvalidArgumentException("LoopInterval has to be at minimum 10s");
         }
@@ -71,6 +77,7 @@ class LoopAndReadHelper
      */
     public function addTrigger(TriggerInterface $trigger)
     {
+        $trigger->setLoopAndReadHelper($this);
         $this->triggers[] = $trigger;
         
         return $this;
@@ -124,7 +131,7 @@ class LoopAndReadHelper
             $this->output->writeln('<info>See https://bugs.php.net/bug.php?id=47918</info>');
         }
         
-        while(true){
+        while(false === $this->stop){
             
             if($ticks % $this->loopInterval == 0){
                 $closure = $this->loopClosure;
@@ -140,6 +147,11 @@ class LoopAndReadHelper
             
             sleep(1);
         }
+    }
+    
+    public function stop()
+    {
+        $this->stop = true;
     }
     
 }

@@ -83,15 +83,15 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
         $self = $this;
         
         return array_merge(parent::getTriggers(), array(
-            new ClosureTrigger('|^refresh$|', function() use ($self){
+            new ClosureTrigger('|^refresh$|', function(TriggerArgs $args) use ($self){
                 $self->outputOptionsAndTickets();
             }),
                     
-            new ClosureTrigger('|^sort (\w+) ?(\w+)?$|', function() use ($self){
+            new ClosureTrigger('|^sort (\w+) ?(\w+)?$|', function(TriggerArgs $args) use ($self){
                 $options = $self->getOptions();
-                $options->setSort(func_get_arg(0));
+                $options->setSort($args->getArg(0));
                 
-                $order = @func_get_arg(1);
+                $order = $args->getArg(1);
                 if($order){
                     $options->setOrder($order);
                 }
@@ -99,10 +99,10 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
                 $self->outputOptionsAndTickets();
             }),
                     
-            new ClosureTrigger('|^assignee ?(\w+)?$|', function() use ($self){
+            new ClosureTrigger('|^assignee ?(\w+)?$|', function(TriggerArgs $args) use ($self){
                 $options = $self->getOptions();
                 
-                $assignee = @func_get_arg(0);
+                $assignee = $args->getArg(0);
                 if(!$assignee){
                     $options->removeAssignee();
                 }else{

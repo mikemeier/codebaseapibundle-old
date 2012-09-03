@@ -59,7 +59,7 @@ class ClosureTrigger extends AbstractTrigger
      * @return ClosureTrigger 
      */
     public function run(){
-        call_user_func_array($this->trigger, $this->args);
+        call_user_func_array($this->trigger, new TriggerArgs($this, $this->args));
         
         return $this;
     }
