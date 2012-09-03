@@ -38,7 +38,7 @@ abstract class AbstractAuthCommand extends AbstractCommand
             ->addOption('key', 'k', InputOption::VALUE_OPTIONAL, 'Codebase API Key')
             ->addOption('passphrase', 'p', InputOption::VALUE_OPTIONAL, 'Passphrase for Credentials Decryption')
             ->addOption('transport', 't', InputOption::VALUE_OPTIONAL, 'Transport for Communication', 'curl')
-            ->addOption('saveinputname', 's', InputOption::VALUE_REQUIRED, 'Saves the current input')
+            ->addOption('recordname', 'r', InputOption::VALUE_REQUIRED, 'Records the current input')
         ;
     }
     
@@ -63,11 +63,11 @@ abstract class AbstractAuthCommand extends AbstractCommand
     protected function saveInputIfOptionIsSet($pass)
     {
         $input = $this->getInput();
-        $saveInputname = $input->getOption('saveinputname');
+        $saveInputname = $input->getOption('recordname');
         
         if($saveInputname){
             
-            $input->setOption('saveinputname', false);
+            $input->setOption('recordname', false);
             
             $arguments = array();
             foreach($input->getArguments() as $key => $value){
