@@ -75,9 +75,7 @@ abstract class AbstractCommand extends ContainerAwareCommand
         
         try {
             $projectName = $this->getContainer()->getParameter('ibrows_codebase_api.projectname');
-        }catch(InvalidArgumentException $e){}
-        
-        if(!$projectName){
+        }catch(InvalidArgumentException $e){
             throw new \InvalidArgumentException("Need projectname option or 'ibrows_codebase_api.projectname' Parameter (parameters.yml e.g.)");
         }
         
