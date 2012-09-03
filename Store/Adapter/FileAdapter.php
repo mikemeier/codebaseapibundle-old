@@ -19,7 +19,11 @@ class FileAdapter extends AbstractAdapter
     {
         $dirname = dirname($path);
         
-        if(!is_dir($dirname) || !mkdir($dirname) || !is_writable($dirname)){
+        if(!is_dir($dirname)){
+            mkdir($dirname);
+        }
+        
+        if(!is_dir($dirname) || !is_writable($dirname)){
             throw new \InvalidArgumentException('Dir "'. $dirname .'" invalid');
         }
         
