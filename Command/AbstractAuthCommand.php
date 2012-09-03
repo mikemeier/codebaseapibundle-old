@@ -52,7 +52,7 @@ abstract class AbstractAuthCommand extends AbstractCommand
     {
         return array_merge(array(
             'command' => $command->getName(),
-            'projectname' => $this->getProjectName()
+            '--projectname' => $this->getProjectName()
         ), $merge);
     }
     
