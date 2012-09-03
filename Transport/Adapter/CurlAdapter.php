@@ -39,7 +39,7 @@ class CurlAdapter extends AbstractAdapter
         
         $body = '
             <ticket-note>
-                <content>'. ($message?:'') .'</content>
+                '. ($message ? '<content>'. $message .'</content>' : '') .'
                 <changes>
                     <status-id>'. self::STATUS_COMPLETED .'</status-id>
                 </changes>
