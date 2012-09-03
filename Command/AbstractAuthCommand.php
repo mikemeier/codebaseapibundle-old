@@ -61,21 +61,9 @@ abstract class AbstractAuthCommand extends AbstractCommand
      */
     protected function getTriggers()
     {
-        $self = $this;
-        
         return array_merge(parent::getTriggers(), array(
             new ClosureTrigger('|^stop$|', function(TriggerArgs $args){
                 $args->getTrigger()->getLoopAndReadHelper()->stop();
-            }),
-                    
-            new ClosureTrigger('|^open (\d+)$|', function(TriggerArgs $args) use ($self){
-                $command = $self->getApplication()->find('codebase:ticket:open-in-browser');
-                
-                $arguments = $self->getDefaultNewCommandInputArgs($command, array(
-                    'ticketnr' => $args->getArg(0)
-                ));
-
-                $command->run(new ArrayInput($arguments), $self->getOutput());
             })
         ));
     }

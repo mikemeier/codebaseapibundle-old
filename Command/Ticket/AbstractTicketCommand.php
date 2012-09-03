@@ -111,6 +111,26 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
                 }
                 
                 $self->outputOptionsAndTickets();
+            }),
+                    
+            new ClosureTrigger('|^open (\d+)$|', function(TriggerArgs $args) use ($self){
+                $command = $self->getApplication()->find('codebase:ticket:open-in-browser');
+                
+                $arguments = $self->getDefaultNewCommandInputArgs($command, array(
+                    'ticketnr' => $args->getArg(0)
+                ));
+
+                $command->run(new ArrayInput($arguments), $self->getOutput());
+            }),
+                    
+            new ClosureTrigger('|^close (\d+)$|', function(TriggerArgs $args) use ($self){
+                $command = $self->getApplication()->find('codebase:ticket:close');
+                
+                $arguments = $self->getDefaultNewCommandInputArgs($command, array(
+                    'ticketnr' => $args->getArg(0)
+                ));
+
+                $command->run(new ArrayInput($arguments), $self->getOutput());
             })
         ));
     }
@@ -136,6 +156,29 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
         }
         
         return array();
+    }
+    
+    protected function closeTicket($ticketId, $message = null)
+    {
+        $output = $this->getOutput();
+        
+        try {
+            return $this
+                ->getTransport()
+                ->closeTicket($this->getProjectName(), $ticketId, $message)
+            ;
+        }catch(AccessDeniedException $e){
+            $output->writeln('<error>Access Denied - Credentials wrong</error>');
+        }catch(NotFoundException $e){
+            $output->writeln('<error>Page not found</error>');
+        }catch(UnprocessableEntityException $e){
+            $output->writeln('<error>Unprocessable Entity</error>');
+            $output->writeln($e->getMessage());
+        }catch(InvalidStatusCodeException $e){
+            $output->writeln('<error>StatusCode invalid</error>');
+        }
+        
+        return false;
     }
     
     protected function outputTickets(array $tickets)

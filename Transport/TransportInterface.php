@@ -10,6 +10,8 @@ use Ibrows\Bundle\CodebaseApiBundle\Result\ResultFactory;
 interface TransportInterface
 {
     
+    const STATUS_COMPLETED = '1507781';
+    
     /**
      * @param string $projectName
      * @param TicketOptions $options 
@@ -40,5 +42,13 @@ interface TransportInterface
      * @return ResultFactory 
      */
     public function getResultFactory();
+    
+    /**
+     * @param string $projectName
+     * @param integer $ticketId
+     * @param string $message
+     * @return boolean
+     */
+    public function closeTicket($projectName, $ticketId, $message);
     
 }

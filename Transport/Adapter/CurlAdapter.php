@@ -29,6 +29,34 @@ class CurlAdapter extends AbstractAdapter
     }
     
     /**
+     * @param string $projectName
+     * @param integer $ticketId
+     * @param string $message
+     * @return boolean
+     */
+    public function closeTicket($projectName, $ticketId, $message){
+        $ch = $this->getCurlHandle();
+        
+        $body = '
+            <ticket-note>
+                <content>'. ($message?:'') .'</content>
+                <changes>
+                    <status-id>'. self::STATUS_COMPLETED .'</status-id>
+                </changes>
+            </ticket-note>
+        ';
+        
+        curl_setopt($ch, CURLOPT_URL, $this->getBaseUri() . $projectName.'/tickets/'. (int)$ticketId .'/notes');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        
+        $result = curl_exec($ch);
+        $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        
+        $this->getResult('Ticket', $statusCode, $result)->getTicket();
+    }
+    
+    /**
      * @param array $options
      * @param TicketOptions
      * @return TicketObject[] $tickets
