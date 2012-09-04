@@ -137,6 +137,9 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
         ));
     }
     
+    /**
+     * @return TicketObject[] 
+     */
     protected function getTickets()
     {
         $output = $this->getOutput();
@@ -160,6 +163,11 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
         return array();
     }
     
+    /**
+     * @param string $ticketId
+     * @param string $message
+     * @return TicketObject 
+     */
     protected function closeTicket($ticketId, $message = null)
     {
         $output = $this->getOutput();
@@ -183,6 +191,9 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
         return false;
     }
     
+    /**
+     * @param array $tickets 
+     */
     protected function outputTickets(array $tickets)
     {
         /* @var $ticket TicketObject */
