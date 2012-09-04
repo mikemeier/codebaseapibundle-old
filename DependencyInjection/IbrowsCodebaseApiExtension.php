@@ -19,8 +19,7 @@ class IbrowsCodebaseApiExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
         
-        $alias = $this->getAlias();
-        $this->registerContainerParametersRecursive($container, $alias, $config);
+        $this->registerContainerParametersRecursive($container, $this->getAlias(), $config);
     }
     
     protected function registerContainerParametersRecursive(ContainerBuilder $container, $alias, $config)
