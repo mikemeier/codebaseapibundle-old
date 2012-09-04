@@ -89,7 +89,7 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
                 $self->outputOptionsAndTickets();
             }),
                     
-            new ClosureTrigger('|^sort (\w+) ?(\w+)?$|', function(TriggerArgs $args) use ($self){
+            new ClosureTrigger('|^setsort (\w+) ?(\w+)?$|', function(TriggerArgs $args) use ($self){
                 $options = $self->getOptions();
                 $options->setSort($args->getArg(0));
                 
@@ -101,7 +101,7 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
                 $self->outputOptionsAndTickets();
             }),
                     
-            new ClosureTrigger('|^assignee ?(\w+)?$|', function(TriggerArgs $args) use ($self){
+            new ClosureTrigger('|^setassignee ?(\w+)?$|', function(TriggerArgs $args) use ($self){
                 $options = $self->getOptions();
                 
                 $assignee = $args->getArg(0);
@@ -124,7 +124,7 @@ abstract class AbstractTicketCommand extends AbstractAuthCommand
                 $command->run(new ArrayInput($arguments), $self->getOutput());
             }),
                     
-            new ClosureTrigger('|^close (\d+) ?(.*)?$|', function(TriggerArgs $args) use ($self){
+            new ClosureTrigger('|^setclose (\d+) ?(.*)?$|', function(TriggerArgs $args) use ($self){
                 $command = $self->getApplication()->find('codebase:ticket:close');
                 
                 $arguments = $self->getDefaultNewCommandInputArgs($command, array(
