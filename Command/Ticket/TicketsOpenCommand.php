@@ -76,6 +76,7 @@ class TicketsOpenCommand extends AbstractTicketCommand
                 '<prio-'. $prio .'>' .
                     'Ticket #' . $ticket->getId() ."\t".
                     'Prio: '. $prio ."\t".
+                    'Status: '. $ticket->getStatus() ."\t".
                     $ticket->getSummary() .
                 '</prio-'. $prio .'>'
             );
